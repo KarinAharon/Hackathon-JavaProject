@@ -12,8 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 
@@ -21,6 +21,8 @@ public class CommonOps extends Base{
 
     @BeforeClass(description = "open driver")
     public void startSession() {
+
+
         createWebSiteDriver();
         enterURL();
         initAction();
@@ -55,6 +57,12 @@ public class CommonOps extends Base{
     public static void initAction(){
         actions = new Actions(driver);
     }
+
+    @Step("init soft")
+    public static void initSoft(){
+        soft = new SoftAssert();
+    }
+
 
 
     //LoginPage

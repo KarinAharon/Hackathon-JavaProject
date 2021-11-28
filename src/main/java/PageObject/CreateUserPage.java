@@ -12,7 +12,11 @@ public class CreateUserPage {
     @FindBy(xpath = "//input[@name='email']") private WebElement email;
     @FindBy(xpath = "//button[@type='submit']") private WebElement createUserBtn;
     @FindBy(xpath = "//input[@placeholder='Search user by login, email, or name.']") private WebElement search;
+    @FindBy(xpath = "//tbody/tr/td[2]/a") private WebElement searchResult;
 
+    public WebElement getSearchResult() {
+        return searchResult;
+    }
 
     public WebElement getNewUserBtn() {
         return newUserBtn;
