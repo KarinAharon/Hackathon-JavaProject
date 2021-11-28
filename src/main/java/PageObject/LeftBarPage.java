@@ -10,7 +10,7 @@ public class LeftBarPage {
     @FindBy(xpath = "//a[@href='/logout']") private WebElement logOut;
     @FindBy(xpath = "//a[@href='/org/users']") private WebElement settingsLogoUsers;
     @FindBy(xpath = "//a[@href='/org/teams']") private WebElement teams;
-    @FindBy(xpath = "//a[@class='css-17dxatg']") private WebElement serverAdmin;
+    @FindBy(xpath = "//a[@aria-label='Server Admin']") private WebElement serverAdmin;
     @FindBy(xpath = "//li[2]/a[@href='/admin/users']") private WebElement serverAdminUsers;
 
     public WebElement getSettingsLogo() {

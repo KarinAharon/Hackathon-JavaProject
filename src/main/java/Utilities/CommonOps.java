@@ -7,6 +7,7 @@ import PageObject.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -22,10 +23,12 @@ public class CommonOps extends Base{
     public void startSession() {
         createWebSiteDriver();
         enterURL();
+        initAction();
         createPageObject();
         insertLoginDetails();
         imWait();
         logIn();
+
 
     }
 
@@ -46,6 +49,11 @@ public class CommonOps extends Base{
     @Step("enter chrome website")
     public static void enterURL() {
         driver.get(ExternalFiles.getData("Url"));
+    }
+
+    @Step("init action")
+    public static void initAction(){
+        actions = new Actions(driver);
     }
 
 
@@ -72,7 +80,7 @@ public class CommonOps extends Base{
     //LeftBarPage
 
     @Step("move from server admin to users")
-    public static void moveToUsersServerAdmin(){
+    public static void moveToUsersServerAdmin()  {
         UI_Actions.mouseOverAndPeek(actions,leftBarPage.getServerAdmin(), leftBarPage.getServerAdminUsers());
     }
 

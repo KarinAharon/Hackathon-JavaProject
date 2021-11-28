@@ -6,7 +6,7 @@ import Utilities.CommonOps;
 
 public class SeleniumTest extends CommonOps {
     @Test(dataProvider = "data-provider", dataProviderClass = DDT.class)
-    public void test01_createNewUser(String name, String email, String user, String password){
+    public void test01_createNewUser(String name, String email, String user, String password) {
         System.out.println(name);
         System.out.println(email);
         System.out.println(user);
