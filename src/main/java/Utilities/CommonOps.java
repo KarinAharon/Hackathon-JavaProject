@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
@@ -19,9 +20,9 @@ public class CommonOps extends Base{
     public void startSession() {
         createWebSiteDriver();
         enterURL();
-        imWait();
         createPageObject();
         insertLoginDetails();
+        imWait();
         logIn();
 
     }
@@ -59,7 +60,7 @@ public class CommonOps extends Base{
 
     @Step
     public static void imWait(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
 
@@ -68,16 +69,11 @@ public class CommonOps extends Base{
         driver.get(ExternalFiles.getData("UrlMain"));
     }
 
-    /*
+
     @AfterClass
     public void closeSession(){
         driver.quit();
     }
-
-     */
-
-
-
 
 
 
