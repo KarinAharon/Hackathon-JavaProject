@@ -41,21 +41,18 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
             <version>3.141.59</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
             <version>3.141.59</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
             <version>3.141.59</version>
-            <scope>test</scope>
         </dependency>
 
         <!--rest api-->
@@ -63,7 +60,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>3.3.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -114,6 +110,12 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.stephenc.monte</groupId>
+            <artifactId>monte-screen-recorder</artifactId>
+            <version>0.7.7.0</version>
         </dependency>
 
     </dependencies>
