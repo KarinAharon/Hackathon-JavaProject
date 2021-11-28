@@ -1,14 +1,19 @@
 package Utilities;
 
+import PageObject.LoginPage;
 import org.openqa.selenium.WebDriver;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.openqa.selenium.interactions.Actions;
 
 public class Base {
 
     //selenium
-    protected WebDriver driver;
-    protected String urlGrafanaWeb;
+    protected static WebDriver driver;
+    protected static String urlGrafanaWeb;
+    protected static Actions actions;
+    //po
+    protected static LoginPage loginPage;
 
 
     //appium
@@ -16,8 +21,8 @@ public class Base {
 
     //RestAPI
     public static RequestSpecification req;
-    public Response res;
-    protected String getUrlGrafanaServer;
+    public static Response res;
+    protected  static String getUrlGrafanaServer;
 
 
 }

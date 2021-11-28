@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Environment>
+    <Url>http://localhost:3000/login</Url>
+    <UrlMain>http://localhost:3000/?orgId=1</UrlMain>
+    <UserName>admin</UserName>
+    <Password>admin</Password>
+</Environment>
