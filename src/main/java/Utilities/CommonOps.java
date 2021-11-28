@@ -2,10 +2,13 @@ package Utilities;
 
 import Extentions.UI_Actions;
 import PageObject.CreateUserPage;
+import PageObject.DeleteUserPage;
 import PageObject.LeftBarPage;
 import PageObject.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -25,12 +28,10 @@ public class CommonOps extends Base{
 
         createWebSiteDriver();
         enterURL();
-        initAction();
         createPageObject();
         insertLoginDetails();
         imWait();
         logIn();
-
 
     }
 
@@ -39,6 +40,7 @@ public class CommonOps extends Base{
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         leftBarPage = PageFactory.initElements(driver, LeftBarPage.class);
         createUserPage = PageFactory.initElements(driver, CreateUserPage.class);
+        deleteUserPage = PageFactory.initElements(driver, DeleteUserPage.class);
     }
 
     @Step("Create chrome driver")
@@ -65,7 +67,7 @@ public class CommonOps extends Base{
 
 
 
-    //LoginPage
+    //Login Page
     @Step("login: insert user name and password")
     public static void insertLoginDetails(){
         UI_Actions.sendKey(loginPage.getUserName(),ExternalFiles.getData("UserName"));
@@ -85,14 +87,15 @@ public class CommonOps extends Base{
 
     }
 
-    //LeftBarPage
+    //Left Bar Page
 
     @Step("move from server admin to users")
-    public static void moveToUsersServerAdmin()  {
+    public static void moveToUsersServerAdmin(){
+        actions = new Actions(driver);
         UI_Actions.mouseOverAndPeek(actions,leftBarPage.getServerAdmin(), leftBarPage.getServerAdminUsers());
     }
 
-    //CreateUserPage
+    //Create User Page
 
     @Step("click on newUser button")
     public static void newUser(){
@@ -112,7 +115,22 @@ public class CommonOps extends Base{
         UI_Actions.click(createUserPage.getCreateUserBtn());
     }
 
+    //Delete User Page
 
+    @Step("move from Configuration to users")
+    public static void moveToUsersConfiguration(){
+        actions = new Actions(driver);
+        UI_Actions.mouseOverAndPeek(actions,leftBarPage.getSettingsLogo(), leftBarPage.getSettingsLogoUsers());
+    }
+
+    @Step("delete user by usernamr")
+    public static void selUserByUserName(String userName){
+        for (WebElement user :
+                deleteUserPage.getListOfAllUsers()) {
+            if(user.findElement(By.xpath("./td[2]")).getText().equals(userName))
+                UI_Actions.click(user.findElement(By.xpath("./td[7]")));
+        }
+    }
 
     @AfterMethod
     public static void navigateToHomePage(){
@@ -124,7 +142,6 @@ public class CommonOps extends Base{
     public void closeSession(){
         driver.quit();
     }
-
 
 
 }

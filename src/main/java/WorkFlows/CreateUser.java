@@ -13,7 +13,6 @@ public class CreateUser extends CommonOps {
         insertNewUserDetails(name, email, user, password);
         createUser();
         searchNewUser(user);
-
     }
 
     @Step("verify new users")

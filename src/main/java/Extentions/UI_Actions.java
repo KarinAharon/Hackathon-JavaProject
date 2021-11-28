@@ -25,8 +25,7 @@ public class UI_Actions {
 
     @Step
     public static void mouseOverAndPeek(Actions action, WebElement elem1, WebElement elem2) {
-        action.moveToElement(elem1).moveToElement(elem2).build().perform();
-        elem2.click();
+        action.moveToElement(elem1).moveToElement(elem2).click().build().perform();
 
 
     }

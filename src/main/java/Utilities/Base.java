@@ -1,6 +1,7 @@
 package Utilities;
 
 import PageObject.CreateUserPage;
+import PageObject.DeleteUserPage;
 import PageObject.LeftBarPage;
 import PageObject.LoginPage;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class Base {
     protected static LoginPage loginPage;
     protected static LeftBarPage leftBarPage;
     protected static CreateUserPage createUserPage;
+    protected static DeleteUserPage deleteUserPage;
 
 
 
