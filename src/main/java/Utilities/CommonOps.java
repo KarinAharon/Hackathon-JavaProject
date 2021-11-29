@@ -38,9 +38,22 @@ public class CommonOps extends Base {
 
     @BeforeClass(description = "open driver")
     public void startSession() throws IOException {
-        initWeb();
-        initApi();
-        initDesktop();
+        switch (ExternalFiles.getData("Platform")){
+            case "Desktop":
+                initDesktop();
+                break;
+            case "Web":
+                initWeb();
+                break;
+            case "API":
+                initApi();
+                break;
+            case "Appium":
+                break;
+            case "Electron":
+                break;
+        }
+
 
     }
 
@@ -70,12 +83,30 @@ public class CommonOps extends Base {
 
     @Step("Create LoginPage object")
     public void createPageObject() {
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
-        leftBarPage = PageFactory.initElements(driver, LeftBarPage.class);
-        createUserPage = PageFactory.initElements(driver, CreateUserPage.class);
-        deleteUserPage = PageFactory.initElements(driver, DeleteUserPage.class);
-        calcPage = PageFactory.initElements(driverDesktop, CalcPage.class);
+        switch (ExternalFiles.getData("Platform")){
+            case "Desktop":
+                calcPage = PageFactory.initElements(driverDesktop, CalcPage.class);
+                break;
+
+            case "Web":
+                loginPage = PageFactory.initElements(driver, LoginPage.class);
+                leftBarPage = PageFactory.initElements(driver, LeftBarPage.class);
+                createUserPage = PageFactory.initElements(driver, CreateUserPage.class);
+                deleteUserPage = PageFactory.initElements(driver, DeleteUserPage.class);
+                break;
+
+            case "API":
+
+                break;
+            case "Appium":
+                break;
+            case "Electron":
+                break;
+        }
+
+
     }
+
 
     @Step("Create chrome driver")
     public void createWebSiteDriver() {
@@ -173,7 +204,20 @@ public class CommonOps extends Base {
 
     @AfterClass
     public void closeSession() {
-        driver.quit();
+        switch (ExternalFiles.getData("Platform")) {
+            case "Desktop":
+                driverDesktop.quit();
+                break;
+            case "Web":
+                driver.quit();
+                break;
+            case "API":
+                break;
+            case "Appium":
+                break;
+            case "Electron":
+                break;
+        }
     }
 
 
@@ -204,8 +248,10 @@ public class CommonOps extends Base {
 
     @Step
     public void initDesktop() throws IOException {
-        initCapabilities();
         initSignature();
+        initCapabilities();
+        createPageObject();
+
 
     }
 
@@ -214,13 +260,14 @@ public class CommonOps extends Base {
 
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", calcApp);
-        driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
-
+        driverDesktop = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
+        driverDesktop.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @Step
     public void initSignature() {
         calcApp = ExternalFiles.getData("Signature");
+        System.out.println(calcApp);
     }
 
 
@@ -288,7 +335,7 @@ public class CommonOps extends Base {
     @Step
     public static int getResult() {
         clickCalc(calcPage.getEqualButton());
-        return Integer.parseInt(calcPage.getCalculatorResults().getText());
+        return Integer.parseInt(calcPage.getCalculatorResults().getText().replaceAll("[a-zA-Z' ']",""));
 
     }
 }
