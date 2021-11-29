@@ -17,11 +17,6 @@ public class UI_Actions {
         elem.sendKeys(value);
     }
 
-    @Step
-    public static void mouseOver(Actions action, WebElement elem) {
-        action.moveToElement(elem).build().perform();
-
-    }
 
     @Step
     public static void mouseOverAndPeek(Actions action, WebElement elem1, WebElement elem2) {

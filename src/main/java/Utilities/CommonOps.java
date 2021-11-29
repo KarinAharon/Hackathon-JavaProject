@@ -7,6 +7,7 @@ import PageObject.WebPO.CreateUserPage;
 import PageObject.WebPO.DeleteUserPage;
 import PageObject.WebPO.LeftBarPage;
 import PageObject.WebPO.LoginPage;
+import com.google.common.util.concurrent.Uninterruptibles;
 import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
@@ -205,6 +206,8 @@ public class CommonOps extends Base {
     //Electron
     public void initElectron(){
         initElectronCapability();
+        initAction();
+        createPageObject();
 
     }
 
@@ -216,6 +219,10 @@ public class CommonOps extends Base {
         capabilities.setCapability("chromeOptions", opt);
         capabilities.setBrowserName("chrome");
         opt.merge(capabilities);
+        driver = new ChromeDriver(capabilities);
+        imWait();
+        Uninterruptibles.sleepUninterruptibly(8, TimeUnit.SECONDS);
+
     }
 
 
