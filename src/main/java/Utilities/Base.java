@@ -1,6 +1,7 @@
 package Utilities;
 
 import PageObject.DesktopPO.CalcPage;
+import PageObject.ElectronPO.ToDoMainPage;
 import PageObject.WebPO.CreateUserPage;
 import PageObject.WebPO.DeleteUserPage;
 import PageObject.WebPO.LeftBarPage;
@@ -11,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.asserts.SoftAssert;
@@ -48,5 +50,11 @@ public class Base {
     protected static DesiredCapabilities capabilities;
     protected static CalcPage calcPage;
     protected static String calcApp ;
+
+    //Electron
+    protected static ChromeOptions opt;
+    protected static ToDoMainPage toDoMainPage;
+
+
 
 }

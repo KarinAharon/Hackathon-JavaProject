@@ -2,6 +2,7 @@ package Utilities;
 
 import Extentions.UI_Actions;
 import PageObject.DesktopPO.CalcPage;
+import PageObject.ElectronPO.ToDoMainPage;
 import PageObject.WebPO.CreateUserPage;
 import PageObject.WebPO.DeleteUserPage;
 import PageObject.WebPO.LeftBarPage;
@@ -15,6 +16,7 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
@@ -51,6 +53,7 @@ public class CommonOps extends Base {
             case "Appium":
                 break;
             case "Electron":
+                initElectron();
                 break;
         }
 
@@ -97,7 +100,7 @@ public class CommonOps extends Base {
             case "Appium":
                 break;
             case "Electron":
-                break;
+                toDoMainPage = PageFactory.initElements(driver, ToDoMainPage.class);
         }
 
 
@@ -143,7 +146,7 @@ public class CommonOps extends Base {
     public void closeSession() {
         if(ExternalFiles.getData("Platform").equals("Desktop"))
             driverDesktop.quit();
-        else if(ExternalFiles.getData("Platform").equals("Web"))
+        else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
             driver.quit();
 
 
@@ -199,6 +202,22 @@ public class CommonOps extends Base {
         System.out.println(calcApp);
     }
 
+    //Electron
+    public void initElectron(){
+        initElectronCapability();
+
+    }
+
+    public void initElectronCapability(){
+        System.setProperty("webdriver.chrome.driver", "C:/Automation/electrondriver.exe");
+        opt = new ChromeOptions();
+        opt.setBinary("C:/todolist/Todolist.exe");
+        capabilities = new DesiredCapabilities();
+        capabilities.setCapability("chromeOptions", opt);
+        capabilities.setBrowserName("chrome");
+        opt.merge(capabilities);
+    }
+
 
     //login web
     @Step("click on logIn button")
@@ -213,4 +232,8 @@ public class CommonOps extends Base {
         UI_Actions.sendKey(loginPage.getPassword(), ExternalFiles.getData("Password"));
 
     }
+
+
+
+
 }
