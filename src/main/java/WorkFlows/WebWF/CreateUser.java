@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class CreateUser extends CommonOps {
 
-    @Step("full create user")
+    @Step("Start create user WorkFlows")
     public static void createNewUser(String name, String email, String user, String password) {
 
         moveToUsersServerAdmin();
@@ -18,7 +18,7 @@ public class CreateUser extends CommonOps {
         searchNewUser(user);
     }
 
-    @Step("verify new users")
+    @Step("Verify new users")
     public static void searchNewUser(String userName) {
         initSoft();
         UI_Actions.sendKey(createUserPage.getSearch(), userName);
@@ -33,12 +33,12 @@ public class CreateUser extends CommonOps {
     }
 
 
-    @Step("click on newUser button")
+    @Step("Click on newUser button")
     public static void newUser() {
         UI_Actions.click(createUserPage.getNewUserBtn());
     }
 
-    @Step("insert details of new user")
+    @Step("Insert details of new user")
     public static void insertNewUserDetails(String name, String email, String user, String password) {
         UI_Actions.sendKey(createUserPage.getName(), name);
         UI_Actions.sendKey(createUserPage.getEmail(), email);
@@ -46,7 +46,7 @@ public class CreateUser extends CommonOps {
         UI_Actions.sendKey(createUserPage.getPassword(), password);
     }
 
-    @Step("click on createUser button")
+    @Step("Click on createUser button")
     public static void createUser() {
         UI_Actions.click(createUserPage.getCreateUserBtn());
     }

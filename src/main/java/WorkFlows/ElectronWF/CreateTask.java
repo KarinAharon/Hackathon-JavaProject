@@ -12,29 +12,27 @@ import java.util.Locale;
 public class CreateTask extends CommonOps {
 
 
-    @Step
+    @Step("Start create task WorkFlows")
     public static void createTask(String taskName, String color){
         colorPicker(color);
         createTaskByName(taskName);
         insertTask();
-
-
     }
 
+    @Step("Create task - Insert task info")
     private static void createTaskByName(String taskName) {
         toDoMainPage.getTaskField().sendKeys(taskName);
     }
 
+    @Step("Create task - Choose task color")
     private static void colorPicker(String color) {
         toDoMainPage.getOpenColorsList().click();
         toDoMainPage.getColorsList().get(Electron_Actions.colorToNum(color.toLowerCase(Locale.ROOT))).click();
-        //System.out.println(Electron_Actions.colorToNum(color));
-
     }
 
+    @Step("Create task - Send Enter key to insert the task")
     private static void insertTask(){
         toDoMainPage.getTaskField().click();
         actions.sendKeys(Keys.ENTER).build().perform();
-
     }
 }

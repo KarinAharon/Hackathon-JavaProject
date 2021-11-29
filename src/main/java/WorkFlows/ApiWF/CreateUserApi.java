@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class CreateUserApi extends CommonOps {
 
-    @Step
+    @Step("Post - Create new user")
     public static void post(String name,String email,String login,String password) {
 
         API_Actions.putAction("name", name,params);

@@ -147,8 +147,8 @@ public class CommonOps extends Base {
     public void closeSession() {
         if(ExternalFiles.getData("Platform").equals("Desktop"))
             driverDesktop.quit();
-        else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
-            driver.quit();
+        //else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
+            //driver.quit();
 
 
     }

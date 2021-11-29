@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import static Extentions.Desktop_Actions.clickCalc;
 
 public class CalcAdd extends CommonOps {
-    @Step
+
+    @Step("Perform an arithmetic operation")
     public static int numbersToAdd(int num1, String operator, int num2){
         numberToWebElement(num1);
         operators(operator);
