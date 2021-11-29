@@ -1,4 +1,4 @@
-package PageObject;
+package PageObject.WebPO;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +7,7 @@ public class LoginPage {
 
     @FindBy(xpath = "//input[@name='user']") private WebElement userName;
     @FindBy(xpath = "//input[@id='current-password']") private WebElement password;
-    @FindBy(xpath = "//button[@aria-label='Login button']") private WebElement logIn;
+    @FindBy(className = "css-1xivtx2-button") private WebElement logIn;
     @FindBy(xpath = "//button[@class='css-1tbo7ox-button']") private WebElement skip;
 
 

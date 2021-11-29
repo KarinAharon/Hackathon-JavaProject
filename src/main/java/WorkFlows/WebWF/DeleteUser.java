@@ -1,7 +1,6 @@
-package WorkFlows;
+package WorkFlows.WebWF;
 
 import Extentions.UI_Actions;
-import PageObject.DeleteUserPage;
 import Utilities.CommonOps;
 import io.qameta.allure.Step;
 import org.testng.Assert;

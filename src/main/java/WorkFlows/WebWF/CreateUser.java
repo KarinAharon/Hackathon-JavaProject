@@ -1,4 +1,4 @@
-package WorkFlows;
+package WorkFlows.WebWF;
 
 import Extentions.UI_Actions;
 import Utilities.CommonOps;

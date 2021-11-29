@@ -4,4 +4,7 @@
     <UrlMain>http://localhost:3000/?orgId=1</UrlMain>
     <UserName>admin</UserName>
     <Password>admin</Password>
+    <UrlAPI>http://localhost:3000/api/</UrlAPI>
+    <UrlAdminAPI>http://admin:admin@localhost:3000/api/admin/users</UrlAdminAPI>
+    <Signature>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Signature>
 </Environment>
