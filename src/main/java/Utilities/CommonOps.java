@@ -198,7 +198,21 @@ public class CommonOps extends Base {
 
     @AfterMethod
     public static void navigateToHomePage() {
-        driver.get(ExternalFiles.getData("UrlMain"));
+        switch (ExternalFiles.getData("Platform")){
+            case "Desktop":
+
+                break;
+            case "Web":
+                driver.get(ExternalFiles.getData("UrlMain"));
+                break;
+            case "API":
+
+                break;
+            case "Appium":
+                break;
+            case "Electron":
+                break;
+        }
     }
 
 
@@ -261,7 +275,7 @@ public class CommonOps extends Base {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", calcApp);
         driverDesktop = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
-        driverDesktop.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
     }
 
     @Step
