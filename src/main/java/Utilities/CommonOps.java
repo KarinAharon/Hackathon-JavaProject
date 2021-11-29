@@ -8,14 +8,14 @@ import PageObject.WebPO.DeleteUserPage;
 import PageObject.WebPO.LeftBarPage;
 import PageObject.WebPO.LoginPage;
 import com.google.common.util.concurrent.Uninterruptibles;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
-import org.junit.rules.TestName;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -25,7 +25,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
-import org.junit.Rule;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,8 +32,7 @@ import java.net.URL;
 
 
 import java.util.concurrent.TimeUnit;
-
-import static Extentions.Desktop_Actions.clickCalc;
+import java.util.logging.Level;
 
 
 public class CommonOps extends Base {
@@ -52,6 +50,7 @@ public class CommonOps extends Base {
                 initApi();
                 break;
             case "Appium":
+                initAppium();
                 break;
             case "Electron":
                 initElectron();
@@ -63,14 +62,14 @@ public class CommonOps extends Base {
 
     // @Rule public TestName name = new TestName();
 
-    //"init API"
+    //init API
     public void initApi() {
         initAdminApiUrl();
         initReq();
         initParams();
     }
 
-   //("init web")
+   //init web
     private void initWeb() {
         //name.getMethodName();
         createWebSiteDriver();
@@ -147,8 +146,10 @@ public class CommonOps extends Base {
     public void closeSession() {
         if(ExternalFiles.getData("Platform").equals("Desktop"))
             driverDesktop.quit();
-        //else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
-            //driver.quit();
+        else if(ExternalFiles.getData("Platform").equals("Appium"))
+            driverAndroid.quit();
+        else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
+            driver.quit();
 
 
     }
@@ -224,7 +225,27 @@ public class CommonOps extends Base {
         Uninterruptibles.sleepUninterruptibly(8, TimeUnit.SECONDS);
 
     }
+    
+    //Appium
+    private void initAppium() throws MalformedURLException {
+        initAppiumCapability();
+        initAppiumDriver();
+        createPageObject();
+    }
 
+    private void initAppiumDriver() throws MalformedURLException {
+        driverAndroid = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), capabilities);
+        driverAndroid.setLogLevel(Level.INFO);
+    }
+
+    private void initAppiumCapability() {
+        capabilities.setCapability("reportDirectory", ExternalFiles.getData("ReportDirectory"));
+        capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
+        capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
+        capabilities.setCapability(MobileCapabilityType.UDID, "207adae9");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "kr.sira.unit");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".Intro");
+    }
 
     //login web
     @Step("click on logIn button")

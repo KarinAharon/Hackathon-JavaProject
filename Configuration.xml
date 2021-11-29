@@ -8,4 +8,7 @@
     <UrlAdminAPI>http://admin:admin@localhost:3000/api/admin/users</UrlAdminAPI>
     <Signature>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Signature>
     <Platform>Electron</Platform>
+    <ReportDirectory>reports</ReportDirectory>
+    <ReportFormat>xml</ReportFormat>
+    <TestName>Untitled</TestName>
 </Environment>

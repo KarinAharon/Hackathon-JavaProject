@@ -6,6 +6,8 @@ import PageObject.WebPO.CreateUserPage;
 import PageObject.WebPO.DeleteUserPage;
 import PageObject.WebPO.LeftBarPage;
 import PageObject.WebPO.LoginPage;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.windows.WindowsDriver;
 import io.restassured.path.json.JsonPath;
 import org.json.simple.JSONObject;
@@ -34,7 +36,10 @@ public class Base {
 
 
     //appium
-
+    protected AndroidDriver<AndroidElement> driverAndroid;
+    protected static String reportDirectory;
+    protected static String reportFormat;
+    protected static String testName;
 
     //RestAPI
     public static RequestSpecification req;
@@ -54,6 +59,7 @@ public class Base {
     //Electron
     protected static ChromeOptions opt;
     protected static ToDoMainPage toDoMainPage;
+
 
 
 
