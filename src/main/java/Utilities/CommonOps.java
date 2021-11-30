@@ -4,10 +4,7 @@ import Extentions.UI_Actions;
 import PageObject.AppiumPO.MainPage;
 import PageObject.DesktopPO.CalcPage;
 import PageObject.ElectronPO.ToDoMainPage;
-import PageObject.WebPO.CreateUserPage;
-import PageObject.WebPO.DeleteUserPage;
-import PageObject.WebPO.LeftBarPage;
-import PageObject.WebPO.LoginPage;
+import PageObject.WebPO.*;
 import com.google.common.util.concurrent.Uninterruptibles;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -35,7 +32,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-import static Utilities.JDBC.initSQLConnection;
+import static Utilities.JDBC.*;
 
 
 public class CommonOps extends Base {
@@ -96,6 +93,7 @@ public class CommonOps extends Base {
                 leftBarPage = PageFactory.initElements(driver, LeftBarPage.class);
                 createUserPage = PageFactory.initElements(driver, CreateUserPage.class);
                 deleteUserPage = PageFactory.initElements(driver, DeleteUserPage.class);
+                profilePage = PageFactory.initElements(driver, ProfilePage.class);
                 break;
 
             case "API":
@@ -143,8 +141,10 @@ public class CommonOps extends Base {
 
     @AfterMethod
     public static void navigateToHomePage() {
-        if(ExternalFiles.getData("Platform").equals("Web"))
+        if(ExternalFiles.getData("Platform").equals("Web")){
             driver.get(ExternalFiles.getData("UrlMain"));
+            closeDBCon();
+        }
     }
 
 
@@ -262,7 +262,7 @@ public class CommonOps extends Base {
         usernameDB = ExternalFiles.getData("UserNameDB");
         passwordDB = ExternalFiles.getData("PasswordDB");
         initSQLConnection();
-
+        getCredentials();
     }
 
     //login web

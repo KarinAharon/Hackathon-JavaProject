@@ -4,6 +4,7 @@ import Utilities.AutoListeners;
 import Utilities.DDT;
 import WorkFlows.WebWF.CreateUser;
 import WorkFlows.WebWF.DeleteUser;
+import WorkFlows.WebWF.VerifyNewUserLogIn;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import Utilities.CommonOps;
@@ -11,6 +12,7 @@ import Utilities.CommonOps;
 import java.util.HashMap;
 
 import static Utilities.JDBC.getCredentials;
+import static WorkFlows.WebWF.VerifyNewUserLogIn.verifyNewUserLogIn;
 
 @Listeners(AutoListeners.class)
 public class SeleniumTest extends CommonOps {
@@ -27,17 +29,9 @@ public class SeleniumTest extends CommonOps {
 
     @Test
     public void test3(){
-        getCredentials();
-        for(String user:credentialsUser){
-            System.out.println(user);
-
-        }
-        for(String user:credentialsPass){
-            System.out.println(user);
-
-        }
+        verifyNewUserLogIn();
+        soft.assertAll();
     }
-
 }
 /*    @Test
     @DisplayName("This is my test")//web

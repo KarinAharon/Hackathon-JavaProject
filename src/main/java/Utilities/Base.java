@@ -3,10 +3,7 @@ package Utilities;
 import PageObject.AppiumPO.MainPage;
 import PageObject.DesktopPO.CalcPage;
 import PageObject.ElectronPO.ToDoMainPage;
-import PageObject.WebPO.CreateUserPage;
-import PageObject.WebPO.DeleteUserPage;
-import PageObject.WebPO.LeftBarPage;
-import PageObject.WebPO.LoginPage;
+import PageObject.WebPO.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.windows.WindowsDriver;
@@ -39,6 +36,7 @@ public class Base {
     protected static LeftBarPage leftBarPage;
     protected static CreateUserPage createUserPage;
     protected static DeleteUserPage deleteUserPage;
+    protected static ProfilePage profilePage;
     protected static MainPage mainPage;
 
 

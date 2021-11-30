@@ -36,7 +36,7 @@ public class JDBC extends Base{
         }
     }
 
-    public void closeDBCon() {
+    public static void closeDBCon() {
         try {
             con.close();
         }
