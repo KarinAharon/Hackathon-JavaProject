@@ -1,6 +1,7 @@
 package Utilities;
 
 import Extentions.UI_Actions;
+import PageObject.AppiumPO.MainPage;
 import PageObject.DesktopPO.CalcPage;
 import PageObject.ElectronPO.ToDoMainPage;
 import PageObject.WebPO.CreateUserPage;
@@ -98,6 +99,7 @@ public class CommonOps extends Base {
 
                 break;
             case "Appium":
+                mainPage = PageFactory.initElements(driverAndroid, MainPage.class);
                 break;
             case "Electron":
                 toDoMainPage = PageFactory.initElements(driver, ToDoMainPage.class);
@@ -239,12 +241,14 @@ public class CommonOps extends Base {
     }
 
     private void initAppiumCapability() {
+        capabilities = new DesiredCapabilities();
         capabilities.setCapability("reportDirectory", ExternalFiles.getData("ReportDirectory"));
         capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
         capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
-        capabilities.setCapability(MobileCapabilityType.UDID, "207adae9");
+        capabilities.setCapability(MobileCapabilityType.UDID, "RFCR405F5FD");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.shivgadhia.android.ukMortgageCalc");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
+
     }
 
     //login web

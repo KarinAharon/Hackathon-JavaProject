@@ -1,13 +1,15 @@
 package test1;
 
-import WorkFlows.DesktopWF.CalcAdd;
+import Utilities.CommonOps;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AppiumTest {
+import static WorkFlows.AppiumWF.PaymentVerify.getRepaymentResult;
+
+public class AppiumTest extends CommonOps {
 
     @Test
-    public void test01(){
-        System.out.println("");
+    public void test01() {
+        Assert.assertEquals(getRepaymentResult("100000", "10", "15"), 1660.43);
     }
 }

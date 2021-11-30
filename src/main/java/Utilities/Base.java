@@ -1,5 +1,6 @@
 package Utilities;
 
+import PageObject.AppiumPO.MainPage;
 import PageObject.DesktopPO.CalcPage;
 import PageObject.ElectronPO.ToDoMainPage;
 import PageObject.WebPO.CreateUserPage;
@@ -32,6 +33,7 @@ public class Base {
     protected static LeftBarPage leftBarPage;
     protected static CreateUserPage createUserPage;
     protected static DeleteUserPage deleteUserPage;
+    protected static MainPage mainPage;
 
 
 
@@ -40,6 +42,7 @@ public class Base {
     protected static String reportDirectory;
     protected static String reportFormat;
     protected static String testName;
+
 
     //RestAPI
     public static RequestSpecification req;
