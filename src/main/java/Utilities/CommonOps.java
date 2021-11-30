@@ -99,7 +99,8 @@ public class CommonOps extends Base {
 
                 break;
             case "Appium":
-                mainPage = PageFactory.initElements(driverAndroid, MainPage.class);
+                mainPage = new MainPage(driverAndroid);
+                //mainPage = PageFactory.initElements(driverAndroid, MainPage.class);
                 break;
             case "Electron":
                 toDoMainPage = PageFactory.initElements(driver, ToDoMainPage.class);
@@ -233,6 +234,7 @@ public class CommonOps extends Base {
         initAppiumCapability();
         initAppiumDriver();
         createPageObject();
+        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
     }
 
     private void initAppiumDriver() throws MalformedURLException {
@@ -245,7 +247,7 @@ public class CommonOps extends Base {
         capabilities.setCapability("reportDirectory", ExternalFiles.getData("ReportDirectory"));
         capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
         capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
-        capabilities.setCapability(MobileCapabilityType.UDID, "RFCR405F5FD");
+        capabilities.setCapability(MobileCapabilityType.UDID, "207adae9");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.shivgadhia.android.ukMortgageCalc");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
 
