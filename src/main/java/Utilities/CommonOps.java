@@ -84,7 +84,7 @@ public class CommonOps extends Base {
 
     public void initScreenSikuli() {
         screen = new Screen();
-        impPath = "./sikuli_IMG";
+        impPath = "C:\\Automation\\new\\Hackathon-JavaProject\\sikuli_IMG\\";
     }
 
     //page management
@@ -100,6 +100,7 @@ public class CommonOps extends Base {
                 createUserPage = PageFactory.initElements(driver, CreateUserPage.class);
                 deleteUserPage = PageFactory.initElements(driver, DeleteUserPage.class);
                 profilePage = PageFactory.initElements(driver, ProfilePage.class);
+                newTeamPage = PageFactory.initElements(driver, NewTeamPage.class);
                 break;
 
             case "API":

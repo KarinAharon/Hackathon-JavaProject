@@ -7,11 +7,13 @@ import org.sikuli.script.FindFailed;
 public class CreateDashboard extends CommonOps {
 
     @Step
-    public static void createDashboard() throws FindFailed {
-        screen.click(impPath + "plus.png");
+    public static boolean createDashboard() throws FindFailed {
+        screen.hover(impPath + "plus.png");
         screen.click(impPath + "dashboard.png");
         screen.click(impPath + "addDash.png");
-        System.out.println(screen.exists(impPath + "verify.png"));
+        if(screen.exists(impPath + "verify_IMG.png").toString().isEmpty())
+            return false;
+        return true;
 
     }
 }

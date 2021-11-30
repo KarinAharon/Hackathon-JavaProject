@@ -43,6 +43,7 @@ public class Base {
     protected static DeleteUserPage deleteUserPage;
     protected static ProfilePage profilePage;
     protected static MainPage mainPage;
+    protected static NewTeamPage newTeamPage;
 
 
 
