@@ -70,7 +70,7 @@ public class CommonOps extends Base {
         initParams();
     }
 
-   //init web
+    //init web
     private void initWeb() {
         //name.getMethodName();
         createWebSiteDriver();
@@ -228,7 +228,7 @@ public class CommonOps extends Base {
         Uninterruptibles.sleepUninterruptibly(8, TimeUnit.SECONDS);
 
     }
-    
+
     //Appium
     private void initAppium() throws MalformedURLException {
         initAppiumCapability();
@@ -247,7 +247,7 @@ public class CommonOps extends Base {
         capabilities.setCapability("reportDirectory", ExternalFiles.getData("ReportDirectory"));
         capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
         capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
-        capabilities.setCapability(MobileCapabilityType.UDID, "207adae9");
+        capabilities.setCapability(MobileCapabilityType.UDID, "2269b6b83a0d7ece");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.shivgadhia.android.ukMortgageCalc");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
 

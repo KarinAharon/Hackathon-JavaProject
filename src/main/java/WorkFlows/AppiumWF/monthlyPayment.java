@@ -4,13 +4,20 @@ import Extentions.Appium_Actions;
 import Utilities.CommonOps;
 import io.qameta.allure.Step;
 
-public class PaymentVerify extends CommonOps {
+public class monthlyPayment extends CommonOps {
 
-    @Step("get full repayment result")
+
+    @Step("Business flow: get full repayment result")
     public static double getRepaymentResult(String gbp, String years, String rate){
         insertDetails(gbp, years, rate);
         calculate();
         return Appium_Actions.stringToDoubleResult(paymentResult());
+    }
+    @Step("Business flow: get full interest result")
+    public static double getInterestResult(String gbp, String years, String rate){
+        insertDetails(gbp, years, rate);
+        calculate();
+        return Appium_Actions.stringToDoubleResult(interestResult());
     }
 
 
@@ -32,4 +39,8 @@ public class PaymentVerify extends CommonOps {
     }
 
 
+    @Step("get interest result")
+    public static String interestResult(){
+        return mainPage.getInterestResult().getText();
+    }
 }
