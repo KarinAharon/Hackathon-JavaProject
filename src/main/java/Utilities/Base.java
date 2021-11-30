@@ -20,6 +20,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.asserts.SoftAssert;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.List;
+
 public class Base {
 
     // selenium
@@ -62,6 +68,17 @@ public class Base {
     //Electron
     protected static ChromeOptions opt;
     protected static ToDoMainPage toDoMainPage;
+
+
+    //Database
+    protected static String dbUrl;
+    protected static ResultSet rs;
+    protected static Connection con;
+    protected static Statement stmt;
+    protected static String usernameDB;
+    protected static String passwordDB;
+    protected static List<String> credentialsUser;
+    protected static List<String> credentialsPass;
 
 
 

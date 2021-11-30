@@ -7,8 +7,11 @@
     <UrlAPI>http://localhost:3000/api/</UrlAPI>
     <UrlAdminAPI>http://admin:admin@localhost:3000/api/admin/users</UrlAdminAPI>
     <Signature>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Signature>
-    <Platform>Appium</Platform>
+    <Platform>Web</Platform>
     <ReportDirectory>reports</ReportDirectory>
     <ReportFormat>xml</ReportFormat>
     <TestName>Untitled</TestName>
+    <UrlDB>jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6455264</UrlDB>
+    <UserNameDB>sql6455264</UserNameDB>
+    <PasswordDB>iRpvF9AjbD</PasswordDB>
 </Environment>

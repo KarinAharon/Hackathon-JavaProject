@@ -8,6 +8,10 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import Utilities.CommonOps;
 
+import java.util.HashMap;
+
+import static Utilities.JDBC.getCredentials;
+
 @Listeners(AutoListeners.class)
 public class SeleniumTest extends CommonOps {
     @Test(dataProvider = "data-provider", dataProviderClass = DDT.class)
@@ -19,6 +23,19 @@ public class SeleniumTest extends CommonOps {
     @Test()
     public void test02_deleteUser() {
         DeleteUser.deleteUser("karina");
+    }
+
+    @Test
+    public void test3(){
+        getCredentials();
+        for(String user:credentialsUser){
+            System.out.println(user);
+
+        }
+        for(String user:credentialsPass){
+            System.out.println(user);
+
+        }
     }
 
 }

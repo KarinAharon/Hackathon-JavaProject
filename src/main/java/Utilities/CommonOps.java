@@ -35,6 +35,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import static Utilities.JDBC.initSQLConnection;
+
 
 public class CommonOps extends Base {
 
@@ -79,6 +81,7 @@ public class CommonOps extends Base {
         insertLoginDetails();
         imWait();
         logIn();
+        initUrlDB();
     }
 
     //page management
@@ -253,6 +256,15 @@ public class CommonOps extends Base {
 
     }
 
+    //DB
+    public void initUrlDB(){
+        dbUrl = ExternalFiles.getData("UrlDB");
+        usernameDB = ExternalFiles.getData("UserNameDB");
+        passwordDB = ExternalFiles.getData("PasswordDB");
+        initSQLConnection();
+
+    }
+
     //login web
     @Step("click on logIn button")
     public static void logIn() {
@@ -266,6 +278,8 @@ public class CommonOps extends Base {
         UI_Actions.sendKey(loginPage.getPassword(), ExternalFiles.getData("Password"));
 
     }
+
+
 
 
 
