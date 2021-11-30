@@ -22,7 +22,7 @@ import org.testng.asserts.SoftAssert;
 
 public class Base {
 
-    //selenium
+    // selenium
     protected static WebDriver driver;
     protected static String urlGrafanaWeb;
     protected static Actions actions;
