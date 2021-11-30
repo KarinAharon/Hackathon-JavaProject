@@ -243,8 +243,8 @@ public class CommonOps extends Base {
         capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
         capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
         capabilities.setCapability(MobileCapabilityType.UDID, "207adae9");
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "kr.sira.unit");
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".Intro");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.shivgadhia.android.ukMortgageCalc");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
     }
 
     //login web
