@@ -15,6 +15,7 @@ import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.sikuli.script.Screen;
 import org.testng.asserts.SoftAssert;
 
 import java.sql.Connection;
@@ -30,6 +31,10 @@ public class Base {
     protected static String urlGrafanaWeb;
     protected static Actions actions;
     protected static SoftAssert soft;
+
+    //Sikuli
+    protected static Screen screen;
+    protected static String impPath;
 
     //po
     protected static LoginPage loginPage;
@@ -56,6 +61,7 @@ public class Base {
     protected static JSONObject params;
     protected static String baseURL;
     protected static String baseAdminURL;
+    protected static String baseUserURL;
 
     //Desktop
     protected static WindowsDriver driverDesktop;

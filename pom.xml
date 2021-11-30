@@ -16,7 +16,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>sikulix-atid-college</id>
+            <name>Sikulix Repo ATID</name>
+            <url>https://atidcollege.co.il/downloads/libs</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <!--Sikuli-->
+        <dependency>
+            <groupId>sikulix</groupId>
+            <artifactId>sikulix-api</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+
         <!--selenium-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

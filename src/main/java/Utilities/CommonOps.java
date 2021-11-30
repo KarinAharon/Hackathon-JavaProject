@@ -19,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -78,6 +79,12 @@ public class CommonOps extends Base {
         imWait();
         logIn();
         initUrlDB();
+        initScreenSikuli();
+    }
+
+    public void initScreenSikuli() {
+        screen = new Screen();
+        impPath = "./sikuli_IMG";
     }
 
     //page management
@@ -163,10 +170,9 @@ public class CommonOps extends Base {
     //API
 
     //Init request
-    private void initReq() {
-        req = RestAssured.given();
+    protected static void initReq() {
+        req = RestAssured.given().auth().preemptive().basic("admin", "admin");
         req.header("Content-Type", "application/json");
-
     }
 
     //Init admin Api url
@@ -177,9 +183,8 @@ public class CommonOps extends Base {
     }
     //Init user Api url
     public static void initUserApiUrl() {
-        baseAdminURL = ExternalFiles.getData("UrlAPI");
-        RestAssured.baseURI = baseAdminURL;
-
+        baseUserURL = ExternalFiles.getData("UrlAPI");
+        RestAssured.baseURI = baseUserURL;
     }
 
     //inti jason params

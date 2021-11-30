@@ -5,18 +5,29 @@ import Utilities.CommonOps;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.Locale;
 
 public class CreateTask extends CommonOps {
 
 
-    @Step("Start create task WorkFlows")
-    public static void createTask(String taskName, String color){
+    @Step("WorkFlows: Start create task")
+    public static boolean createTask(String taskName, String color){
         colorPicker(color);
         createTaskByName(taskName);
         insertTask();
+        return VerifyCreate(taskName);
+    }
+
+    @Step("Verify task created")
+    private static boolean VerifyCreate(String taskName) {
+        toDoMainPage.getTaskText();
+
+        for (WebElement name : toDoMainPage.getTaskText()) {
+            if(name.getText().equals(taskName))
+                return true;
+        }
+        return false;
     }
 
     @Step("Create task - Insert task info")

@@ -10,7 +10,7 @@ public class ToDoMainPage {
     @FindBy(xpath = "//span[@class='dateFormatted_3GjaR']") private WebElement date;
     @FindBy(xpath = "//input[@placeholder='Create a task']") private WebElement taskField;
     @FindBy(xpath = "//div[@class='view_2Ow90']/*[name()='svg']") private List<WebElement> deleteTask;
-    @FindBy(xpath = "//div[@class='taskWrapper_2u8dN']") private List<WebElement> tasksList;
+    @FindBy(xpath = "//div[@class='textWrapper_X9gil']/label") private List<WebElement> taskText;
     @FindBy(xpath = "//div[@class='topWrapper_2caNE']/*[name()='svg']") private WebElement openColorsList;
     @FindBy(xpath = "//div[@class='wrapper_3Kpfj vertical_di1oV tagList_2NRe0']/span") private List<WebElement> colorsList;
 
@@ -26,8 +26,8 @@ public class ToDoMainPage {
         return deleteTask;
     }
 
-    public List<WebElement> getTasksList() {
-        return tasksList;
+    public List<WebElement> getTaskText() {
+        return taskText;
     }
 
     public WebElement getOpenColorsList() {
