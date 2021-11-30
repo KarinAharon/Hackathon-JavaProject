@@ -7,7 +7,7 @@
     <UrlAPI>http://localhost:3000/api/</UrlAPI>
     <UrlAdminAPI>http://admin:admin@localhost:3000/api/admin/users</UrlAdminAPI>
     <Signature>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Signature>
-    <Platform>Web</Platform>
+    <Platform>API</Platform>
     <ReportDirectory>reports</ReportDirectory>
     <ReportFormat>xml</ReportFormat>
     <TestName>Untitled</TestName>

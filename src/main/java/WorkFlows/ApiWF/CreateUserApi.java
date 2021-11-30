@@ -13,7 +13,7 @@ public class CreateUserApi extends CommonOps {
 
     @Step("Post - Create new user")
     public static void post(String name,String email,String login,String password) {
-
+        initAdminApiUrl();
         API_Actions.putAction("name", name,params);
         API_Actions.putAction("email", email,params);
         API_Actions.putAction("login", login,params);

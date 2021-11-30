@@ -64,7 +64,6 @@ public class CommonOps extends Base {
 
     //init API
     public void initApi() {
-        initAdminApiUrl();
         initReq();
         initParams();
     }
@@ -170,9 +169,15 @@ public class CommonOps extends Base {
 
     }
 
-    //Init Api url
-    public void initAdminApiUrl() {
+    //Init admin Api url
+    public static void initAdminApiUrl() {
         baseAdminURL = ExternalFiles.getData("UrlAdminAPI");
+        RestAssured.baseURI = baseAdminURL;
+
+    }
+    //Init user Api url
+    public static void initUserApiUrl() {
+        baseAdminURL = ExternalFiles.getData("UrlAPI");
         RestAssured.baseURI = baseAdminURL;
 
     }
