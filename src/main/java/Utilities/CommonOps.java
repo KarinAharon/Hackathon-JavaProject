@@ -47,19 +47,19 @@ public class CommonOps extends Base {
     public void startSession(String platform, String browser) throws IOException {
         switch (platform) {
             case "Desktop":
-                initDesktop();
+                initDesktop(platform);
                 break;
             case "Web":
-                initWeb(browser);
+                initWeb(platform,browser);
                 break;
             case "API":
                 initApi();
                 break;
             case "Appium":
-                initAppium();
+                initAppium(platform);
                 break;
             case "Electron":
-                initElectron();
+                initElectron(platform);
                 break;
         }
 
@@ -75,11 +75,12 @@ public class CommonOps extends Base {
     }
 
     //init web
-    private void initWeb(String browser) {
+
+    private void initWeb(String platform, String browser) {
         //name.getMethodName();
         createWebSiteDriver(browser);
         enterURL();
-        createPageObject();
+        createPageObject(platform);
         insertLoginDetails();
         imWait();
         logIn();
@@ -93,8 +94,8 @@ public class CommonOps extends Base {
     }
 
     //page management
-    public void createPageObject() {
-        switch (ExternalFiles.getData("Platform")) {
+    public void createPageObject(String platform) {
+        switch (platform) {
             case "Desktop":
                 calcPage = PageFactory.initElements(driverDesktop, CalcPage.class);
                 break;
@@ -174,8 +175,8 @@ public class CommonOps extends Base {
     }
 
     @AfterMethod
-    public static void navigateToHomePage() {
-        if (ExternalFiles.getData("Platform").equals("Web")) {
+    public static void navigateToHomePage(String platform) {
+        if (platform.equals("Web")) {
             driver.get(ExternalFiles.getData("UrlMain"));
             closeDBCon();
         }
@@ -226,10 +227,10 @@ public class CommonOps extends Base {
     //Desktop
 
     //init desktop application
-    public void initDesktop() throws IOException {
+    public void initDesktop(String platform) throws IOException {
         initSignature();
         initCapabilities();
-        createPageObject();
+        createPageObject(platform);
 
 
     }
@@ -250,10 +251,10 @@ public class CommonOps extends Base {
     }
 
     //Electron
-    public void initElectron() {
+    public void initElectron(String platform) {
         initElectronCapability();
         initAction();
-        createPageObject();
+        createPageObject(platform);
 
     }
 
@@ -272,10 +273,10 @@ public class CommonOps extends Base {
     }
 
     //Appium
-    private void initAppium() throws MalformedURLException {
+    private void initAppium(String platform) throws MalformedURLException {
         initAppiumCapability();
         initAppiumDriver();
-        createPageObject();
+        createPageObject(platform);
         Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
     }
 
