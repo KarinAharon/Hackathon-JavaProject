@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Environment>
+    <!--Web-->
     <Url>http://localhost:3000/login</Url>
     <UrlMain>http://localhost:3000/?orgId=1</UrlMain>
     <UserName>admin</UserName>
     <Password>admin</Password>
+
+    <!--Api-->
     <UrlAPI>http://localhost:3000/api/</UrlAPI>
     <UrlAdminAPI>http://admin:admin@localhost:3000/api/admin/users</UrlAdminAPI>
+
+    <!--Desktop-->
     <Signature>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Signature>
-    <Platform>Web</Platform>
+
+    <!--Appium-->
     <ReportDirectory>reports</ReportDirectory>
     <ReportFormat>xml</ReportFormat>
     <TestName>Untitled</TestName>
+
+    <!--Database-->
     <UrlDB>jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6455264</UrlDB>
     <UserNameDB>sql6455264</UserNameDB>
     <PasswordDB>iRpvF9AjbD</PasswordDB>

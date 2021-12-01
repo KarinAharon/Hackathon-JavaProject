@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="WebEdgeSuite" parallel="false">
+    <listeners>
+        <listener class-name="Utilities.AutoListeners"/>
+    </listeners>
+    <test name="TestGrafana">
+        <classes>
+            <class name="TestCases.SeleniumTest">
+                <parameter name="Platform" value="Web"></parameter>
+                <parameter name="Browser" value="Edge"></parameter>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

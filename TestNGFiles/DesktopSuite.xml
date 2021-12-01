@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="DesktopSuite" parallel="false">
+    <listeners>
+        <listener class-name="Utilities.AutoListeners"/>
+    </listeners>
+    <test name="TestMortgage">
+        <classes>
+            <class name="TestCases.DesktopTest">
+                <parameter name="Platform" value="Desktop"></parameter>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

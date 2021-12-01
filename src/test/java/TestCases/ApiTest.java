@@ -1,4 +1,4 @@
-package test1;
+package TestCases;
 
 import Utilities.AutoListeners;
 import Utilities.CommonOps;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static WorkFlows.ApiWF.FindUserByID.findUserByID;
 import static WorkFlows.ApiWF.UpdateUser.updateUserByID;
 
-@Listeners(AutoListeners.class)
+
 public class ApiTest extends CommonOps {
     @Test
     public void Test1_CreateUser(){

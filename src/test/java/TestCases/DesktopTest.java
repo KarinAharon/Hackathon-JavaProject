@@ -1,4 +1,4 @@
-package test1;
+package TestCases;
 
 import Utilities.AutoListeners;
 import Utilities.CommonOps;
@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(AutoListeners.class)
+
 public class DesktopTest extends CommonOps {
     @Test
     public void test1calc(){
