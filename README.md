@@ -12,7 +12,7 @@ In this project we have created a single automation infrastructure that supports
  * ToDo List in electron 
  * Calculator in Desktop
 ## In addition the infrastructure supports and contains:
-*	Visual testing with Sikuli
+[ ]	Visual testing with Sikuli
 *	Data Driven Testing 
 *	Full connection to database for retrieving data
 *	Page Objet 
