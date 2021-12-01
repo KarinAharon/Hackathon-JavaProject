@@ -22,9 +22,9 @@ public class AutoListeners implements ITestListener {
 
     public void onTestSuccess(ITestResult test){
         System.out.println("---- Test "  + test.getName() + " pass ---");
-        /*
+
         try {
-            //MonteScreenRecorder.stopRecord();
+            MonteScreenRecorder.stopRecord();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,21 +34,22 @@ public class AutoListeners implements ITestListener {
         }
         else System.out.println("failed to delete");
 
-         */
+
     }
 
 
     public void onTestFailure(ITestResult test){
 
         System.out.println("---- Test "  + test.getName() + " fail ---");
-        /*
+
+        CommonOps.saveScreenshot();
         try {
-            //MonteScreenRecorder.stopRecord();
+            MonteScreenRecorder.stopRecord();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-         */
+
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult test) {

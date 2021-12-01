@@ -1,14 +1,17 @@
 package test1;
 
+import Utilities.AutoListeners;
 import Utilities.CommonOps;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static WorkFlows.ElectronWF.CreateTask.createTask;
 import static WorkFlows.ElectronWF.DeleteTask.deleteAllTask;
 import static WorkFlows.ElectronWF.DeleteTaskByName.deleteTaskByName;
 
+@Listeners(AutoListeners.class)
 public class ElectronTest extends CommonOps {
 
     @Test

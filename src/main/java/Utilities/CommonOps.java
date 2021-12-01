@@ -11,9 +11,12 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -23,9 +26,11 @@ import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -145,6 +150,20 @@ public class CommonOps extends Base {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+
+    @BeforeMethod
+    public static void startRecord(Method method){
+        try {
+            MonteScreenRecorder.startRecord(method.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Attachment(value = "Page Screen-Shot", type = "image/png")
+    public static byte[] saveScreenshot() {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+    }
 
     @AfterMethod
     public static void navigateToHomePage() {

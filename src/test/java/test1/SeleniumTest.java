@@ -30,7 +30,7 @@ public class SeleniumTest extends CommonOps {
 
     @Test(description="Delete user by name")
     public void test02_deleteUser() {
-        DeleteUser.deleteUser("karina");
+        DeleteUser.deleteUser("henb");
     }
 
     @Test(description="Verify correct user name and pass from DB")
