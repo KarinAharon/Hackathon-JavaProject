@@ -175,6 +175,7 @@ public class CommonOps extends Base {
     }
 
     @AfterMethod
+    @Parameters({"Platform"})
     public static void navigateToHomePage(String platform) {
         if (platform.equals("Web")) {
             driver.get(ExternalFiles.getData("UrlMain"));
