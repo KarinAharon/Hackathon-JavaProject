@@ -11,9 +11,12 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -22,13 +25,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.sikuli.script.Screen;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -42,9 +43,9 @@ import static Utilities.JDBC.*;
 public class CommonOps extends Base {
 
     @BeforeClass(description = "open driver")
-    @Parameters({"Platform","Browser"})
-    public void startSession(String platform,String browser) throws IOException {
-        switch (platform){
+    @Parameters({"Platform", "Browser"})
+    public void startSession(String platform, String browser) throws IOException {
+        switch (platform) {
             case "Desktop":
                 initDesktop();
                 break;
@@ -93,7 +94,7 @@ public class CommonOps extends Base {
 
     //page management
     public void createPageObject() {
-        switch (ExternalFiles.getData("Platform")){
+        switch (ExternalFiles.getData("Platform")) {
             case "Desktop":
                 calcPage = PageFactory.initElements(driverDesktop, CalcPage.class);
                 break;
@@ -125,7 +126,7 @@ public class CommonOps extends Base {
     //Create chrome driver
 
     public void createWebSiteDriver(String browser) {
-        switch (browser){
+        switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
@@ -163,10 +164,18 @@ public class CommonOps extends Base {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+    @BeforeMethod
+    public void BeforeMethod(Method method){
+        try {
+            MonteScreenRecorder.startRecord(method.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @AfterMethod
     public static void navigateToHomePage() {
-        if(ExternalFiles.getData("Platform").equals("Web")){
+        if (ExternalFiles.getData("Platform").equals("Web")) {
             driver.get(ExternalFiles.getData("UrlMain"));
             closeDBCon();
         }
@@ -175,11 +184,11 @@ public class CommonOps extends Base {
 
     @AfterClass
     public void closeSession() {
-        if(ExternalFiles.getData("Platform").equals("Desktop"))
+        if (ExternalFiles.getData("Platform").equals("Desktop"))
             driverDesktop.quit();
-        else if(ExternalFiles.getData("Platform").equals("Appium"))
+        else if (ExternalFiles.getData("Platform").equals("Appium"))
             driverAndroid.quit();
-        else if(ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
+        else if (ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
             driver.quit();
 
 
@@ -200,6 +209,7 @@ public class CommonOps extends Base {
         RestAssured.baseURI = baseAdminURL;
 
     }
+
     //Init user Api url
     public static void initUserApiUrl() {
         baseUserURL = ExternalFiles.getData("UrlAPI");
@@ -240,14 +250,14 @@ public class CommonOps extends Base {
     }
 
     //Electron
-    public void initElectron(){
+    public void initElectron() {
         initElectronCapability();
         initAction();
         createPageObject();
 
     }
 
-    public void initElectronCapability(){
+    public void initElectronCapability() {
         System.setProperty("webdriver.chrome.driver", "C:/Automation/electrondriver.exe");
         opt = new ChromeOptions();
         opt.setBinary("C:/todolist/Todolist.exe");
@@ -286,7 +296,7 @@ public class CommonOps extends Base {
     }
 
     //DB
-    public void initUrlDB(){
+    public void initUrlDB() {
         dbUrl = ExternalFiles.getData("UrlDB");
         usernameDB = ExternalFiles.getData("UserNameDB");
         passwordDB = ExternalFiles.getData("PasswordDB");
@@ -305,12 +315,11 @@ public class CommonOps extends Base {
     public static void insertLoginDetails() {
         UI_Actions.sendKey(loginPage.getUserName(), ExternalFiles.getData("UserName"));
         UI_Actions.sendKey(loginPage.getPassword(), ExternalFiles.getData("Password"));
-
     }
 
-
-
-
-
+    @Attachment(value = "Page Screen-Shot", type = "image/png")
+    public static byte[] saveScreenshot () {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 
 }
