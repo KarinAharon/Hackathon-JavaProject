@@ -143,6 +143,7 @@
         </repository>
     </repositories>
 
+
     <!--allure-->
     <build>
         <plugins>
@@ -294,7 +295,6 @@
                 </plugins>
             </build>
         </profile>
-
-
     </profiles>
+
 </project>

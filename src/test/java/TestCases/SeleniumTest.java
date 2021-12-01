@@ -15,7 +15,7 @@ import static WorkFlows.WebWF.VerifyNewUserLogIn.verifyNewUserLogIn;
 
 public class SeleniumTest extends CommonOps {
 
-    @Test(dataProvider = "data-provider", description="Create new users by DDL",dataProviderClass = DDT.class)
+    @Test(dataProvider = "data-provider", description="Create new users by DDT",dataProviderClass = DDT.class)
     public void test01_createNewUser(String name, String email, String user, String password){
         CreateUser.createNewUser(name, email, user, password);
         soft.assertAll();
@@ -23,8 +23,9 @@ public class SeleniumTest extends CommonOps {
 
     @Test(description="Delete user by name")
     public void test02_deleteUser() {
-        DeleteUser.deleteUser("henb");
+        Assert.assertTrue(DeleteUser.deleteUser("hb"));
     }
+
 
     @Test(description="Verify correct user name and pass from DB")
     public void test3(){

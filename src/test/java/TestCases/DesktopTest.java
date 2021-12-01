@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 public class DesktopTest extends CommonOps {
     @Test
     public void test1calc(){
-       int x= CalcAdd.numbersToAdd(3,"*",2);
-        Assert.assertEquals(x, 4);
+        Assert.assertEquals(CalcAdd.numbersToAdd(3,"*",2), 6);
     }
 }

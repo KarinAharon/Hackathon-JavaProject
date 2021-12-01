@@ -8,6 +8,7 @@
         <classes>
             <class name="TestCases.ElectronTest">
                 <parameter name="Platform" value="Electron"></parameter>
+                <parameter name="Browser" value=""></parameter>
             </class>
         </classes>
     </test> <!-- Test -->

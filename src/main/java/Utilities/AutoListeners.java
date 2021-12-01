@@ -42,7 +42,8 @@ public class AutoListeners implements ITestListener {
 
         System.out.println("---- Test "  + test.getName() + " fail ---");
 
-        CommonOps.saveScreenshot();
+        if(test.getTestClass().equals("[TestClass name=class TestCases.SeleniumTest]"))
+            CommonOps.saveScreenshot();
         try {
             MonteScreenRecorder.stopRecord();
         } catch (Exception e) {

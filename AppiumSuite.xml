@@ -8,6 +8,7 @@
         <classes>
             <class name="TestCases.AppiumTest">
                 <parameter name="Platform" value="Appium"></parameter>
+                <parameter name="Browser" value=""></parameter>
             </class>
         </classes>
     </test> <!-- Test -->

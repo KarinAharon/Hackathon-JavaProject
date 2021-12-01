@@ -6,22 +6,21 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 
 public class DeleteUser extends CommonOps {
 
     @Step("Start delete user WorkFlows")
-    public static void deleteUser(String userName) {
+    public static boolean deleteUser(String userName) {
         moveToUsersConfiguration();
         selUserByUserName(userName);
         UI_Actions.click(deleteUserPage.getApproveDeleteBtn());
-        searchByUser(userName);
+        return searchByUser(userName);
     }
 
     @Step("Delete user - Verify user delete")
-    public static void searchByUser(String userName) {
+    public static boolean searchByUser(String userName) {
         UI_Actions.sendKey(deleteUserPage.getSearch(), userName);
-        Assert.assertFalse(deleteUserPage.getListOfAllUsers().size() > 0);
+        return(deleteUserPage.getListOfAllUsers().size() > 0);
     }
     @Step("Delete user - Move from Configuration to users")
     public static void moveToUsersConfiguration() {

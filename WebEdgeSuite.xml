@@ -8,7 +8,7 @@
         <classes>
             <class name="TestCases.SeleniumTest">
                 <parameter name="Platform" value="Web"></parameter>
-                <parameter name="Browser" value="Edge"></parameter>
+                <parameter name="Browser" value="edge"></parameter>
             </class>
         </classes>
     </test> <!-- Test -->

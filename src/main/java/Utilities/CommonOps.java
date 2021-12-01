@@ -51,7 +51,7 @@ public class CommonOps extends Base {
                 initDesktop(platform);
                 break;
             case "Web":
-                initWeb(platform,browser);
+                initWeb(platform,browser.toLowerCase());
                 break;
             case "API":
                 initApi();
@@ -159,7 +159,7 @@ public class CommonOps extends Base {
 
     //implicitly wait
     public static void imWait() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @BeforeMethod
