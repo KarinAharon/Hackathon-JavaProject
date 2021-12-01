@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 public class CreatTeam extends CommonOps {
 
     @Step("WebFlow: create Team ")
-    public static boolean createNewUser(String name, String email) {
+    public static boolean createNewTeam(String name, String email) {
 
         moveToUsersSettingTeam();
         newTeam();

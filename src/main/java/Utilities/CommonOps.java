@@ -24,6 +24,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
+import org.python.antlr.ast.Str;
 import org.sikuli.script.Screen;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
@@ -62,8 +63,6 @@ public class CommonOps extends Base {
                 initElectron(platform);
                 break;
         }
-
-
     }
 
     // @Rule public TestName name = new TestName();
@@ -81,9 +80,7 @@ public class CommonOps extends Base {
         createWebSiteDriver(browser);
         enterURL();
         createPageObject(platform);
-        insertLoginDetails();
         imWait();
-        logIn();
         initUrlDB();
         initScreenSikuli();
     }
@@ -166,7 +163,13 @@ public class CommonOps extends Base {
     }
 
     @BeforeMethod
-    public void BeforeMethod(Method method){
+    @Parameters({"Platform"})
+    public void BeforeMethod(String platform,  Method method){
+        if(platform.equals("Web"))
+        {
+            insertLoginDetails();
+            logIn();
+        }
         try {
             MonteScreenRecorder.startRecord(method.getName());
         } catch (Exception e) {
@@ -178,19 +181,26 @@ public class CommonOps extends Base {
     @Parameters({"Platform"})
     public static void navigateToHomePage(String platform) {
         if (platform.equals("Web")) {
-            driver.get(ExternalFiles.getData("UrlMain"));
+            logOut();
+            //driver.get(ExternalFiles.getData("UrlMain"));
             closeDBCon();
         }
     }
 
+    private static void logOut() {
+        actions = new Actions(driver);
+        UI_Actions.mouseOverAndPeek(actions, leftBarPage.getAvatarLogo(), leftBarPage.getLogOut());
+    }
+
 
     @AfterClass
-    public void closeSession() {
-        if (ExternalFiles.getData("Platform").equals("Desktop"))
+    @Parameters({"Platform"})
+    public void closeSession(String platform) {
+        if (platform.equals("Desktop"))
             driverDesktop.quit();
-        else if (ExternalFiles.getData("Platform").equals("Appium"))
+        else if (platform.equals("Appium"))
             driverAndroid.quit();
-        else if (ExternalFiles.getData("Platform").equals("Web") || ExternalFiles.getData("Platform").equals("Electron"))
+        else if (platform.equals("Web") || platform.equals("Electron"))
             driver.quit();
 
 
