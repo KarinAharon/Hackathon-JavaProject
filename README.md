@@ -21,3 +21,5 @@
 
   All the tests cases results are fully reported by allure-report (recording by MonteScreenRecorder and screenshot).
   The full automation run throw Jenkins jobs.
+
+img-buildkite-64
