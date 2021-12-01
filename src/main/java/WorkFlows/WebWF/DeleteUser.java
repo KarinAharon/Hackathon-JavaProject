@@ -2,10 +2,13 @@ package WorkFlows.WebWF;
 
 import Extentions.UI_Actions;
 import Utilities.CommonOps;
+import com.google.common.util.concurrent.Uninterruptibles;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.concurrent.TimeUnit;
 
 public class DeleteUser extends CommonOps {
 
@@ -19,7 +22,9 @@ public class DeleteUser extends CommonOps {
 
     @Step("Delete user - Verify user delete")
     public static boolean searchByUser(String userName) {
+        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         UI_Actions.sendKey(deleteUserPage.getSearch(), userName);
+        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         return(deleteUserPage.getListOfAllUsers().size() > 0);
     }
     @Step("Delete user - Move from Configuration to users")

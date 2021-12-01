@@ -23,7 +23,7 @@ public class SeleniumTest extends CommonOps {
 
     @Test(description="Delete user by name")
     public void test02_deleteUser() {
-        Assert.assertTrue(DeleteUser.deleteUser("henb"));
+        Assert.assertFalse(DeleteUser.deleteUser("henb"));
     }
 
 
