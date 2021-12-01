@@ -20,5 +20,5 @@
 * TestNG
 
   All the tests cases results are fully reported by allure-report (recording by MonteScreenRecorder and screenshot).
-  The full automation run throw Jenkins jobs. :jenkins:
+  The full automation run throw Jenkins jobs.
 
