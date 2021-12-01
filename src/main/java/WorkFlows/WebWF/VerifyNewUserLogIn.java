@@ -1,11 +1,8 @@
 package WorkFlows.WebWF;
 
 import Extentions.UI_Actions;
-import PageObject.WebPO.LeftBarPage;
 import Utilities.CommonOps;
 import org.openqa.selenium.interactions.Actions;
-
-import java.security.cert.Extension;
 
 public class VerifyNewUserLogIn extends CommonOps {
 

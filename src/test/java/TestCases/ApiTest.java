@@ -1,10 +1,8 @@
 package TestCases;
 
-import Utilities.AutoListeners;
 import Utilities.CommonOps;
 import WorkFlows.ApiWF.CreateUserApi;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static WorkFlows.ApiWF.FindUserByID.findUserByID;
