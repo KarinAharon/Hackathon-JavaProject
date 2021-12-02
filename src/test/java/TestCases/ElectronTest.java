@@ -14,17 +14,18 @@ public class ElectronTest extends CommonOps {
     @Test
     public void test01_createNewTask(){
         Assert.assertTrue(createTask("Do Home Work", "red"));
-        Assert.assertTrue(createTask("Do Home Work2", "blue"));
-        Assert.assertTrue(createTask("Do Home Work3", "green"));
+        Assert.assertTrue(createTask("Wash the dishes", "blue"));
+        Assert.assertTrue(createTask("Make food", "green"));
+    }
+    
+    @Test
+    public void test02_delTaskByName(){
+        Assert.assertTrue(deleteTaskByName("Wash the dishes"));
     }
 
     @Test
-    public void test02_delAllTask(){
+    public void test03_delAllTask(){
         Assert.assertTrue(deleteAllTask());
     }
 
-    @Test
-    public void test03_delTaskByName(){
-        Assert.assertTrue(deleteTaskByName("Do Home Work2"));
-    }
 }
