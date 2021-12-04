@@ -8,13 +8,6 @@ public class Electron_Actions {
 
 
     @Step
-    public static void mouseOverAndClick(Actions action, WebElement elem) {
-        action.moveToElement(elem).click().build().perform();
-
-    }
-
-
-    @Step
     public static int colorToNum(String color){
         switch (color){
             case "white":
@@ -37,4 +30,13 @@ public class Electron_Actions {
         }
     }
 
+
+
+    /*
+    @Step
+    public static void mouseOverAndClick(Actions action, WebElement elem) {
+        action.moveToElement(elem).click().build().perform();
+
+    }
+     */
 }

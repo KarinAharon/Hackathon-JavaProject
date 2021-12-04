@@ -59,6 +59,8 @@ public class CommonOps extends Base {
             case "Electron":
                 initElectron(platform);
                 break;
+            default:
+                throw new IOException("This platform is not supported");
         }
     }
 
@@ -84,7 +86,7 @@ public class CommonOps extends Base {
 
     public void initScreenSikuli() {
         screen = new Screen();
-        impPath = "C:\\Automation\\new\\Hackathon-JavaProject\\sikuli_IMG\\";
+        impPath = "C:\\Automation\\Hackathon-JavaProject\\sikuli_IMG\\";
     }
 
     //page management
@@ -108,7 +110,6 @@ public class CommonOps extends Base {
                 break;
             case "Appium":
                 mainPage = new MainPage(driverAndroid);
-                //mainPage = PageFactory.initElements(driverAndroid, MainPage.class);
                 break;
             case "Electron":
                 toDoMainPage = PageFactory.initElements(driver, ToDoMainPage.class);
@@ -179,7 +180,6 @@ public class CommonOps extends Base {
     public static void navigateToHomePage(String platform) {
         if (platform.equals("Web")) {
             logOut();
-            //driver.get(ExternalFiles.getData("UrlMain"));
             closeDBCon();
         }
     }
@@ -298,7 +298,7 @@ public class CommonOps extends Base {
         capabilities.setCapability("reportDirectory", ExternalFiles.getData("ReportDirectory"));
         capabilities.setCapability("reportFormat", ExternalFiles.getData("ReportFormat"));
         capabilities.setCapability("testName", ExternalFiles.getData("TestName"));
-        capabilities.setCapability(MobileCapabilityType.UDID, "2269b6b83a0d7ece");
+        capabilities.setCapability(MobileCapabilityType.UDID, "RFCR405F5FD");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.shivgadhia.android.ukMortgageCalc");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
 

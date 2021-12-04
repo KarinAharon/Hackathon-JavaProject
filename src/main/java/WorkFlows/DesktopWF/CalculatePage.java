@@ -5,10 +5,10 @@ import io.qameta.allure.Step;
 
 import static Extentions.Desktop_Actions.clickCalc;
 
-public class CalcAdd extends CommonOps {
+public class CalculatePage extends CommonOps {
 
     @Step("Perform an arithmetic operation")
-    public static int numbersToAdd(int num1, String operator, int num2){
+    public static int twoNumbersToCalculate(int num1, String operator, int num2){
         numberToWebElement(num1);
         operators(operator);
         numberToWebElement(num2);
