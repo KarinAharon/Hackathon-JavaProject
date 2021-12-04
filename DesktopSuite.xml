@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="Utilities.AutoListeners"/>
     </listeners>
-    <test name="TestMortgage">
+    <test name="TestCalculate">
         <classes>
             <class name="TestCases.DesktopTest">
                 <parameter name="Platform" value="Desktop"></parameter>
